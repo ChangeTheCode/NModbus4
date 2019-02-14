@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <Description>NModbus is a C# implementation of the Modbus protocol. Provides connectivity to Modbus slave compatible devices and applications. Supports TCP, and UDP protocols. NModbus4 it's a fork of NModbus(https://code.google.com/p/nmodbus)</Description>
-    <VersionPrefix>4.0.1</VersionPrefix>
-    <Authors>Dmitry Turin</Authors>
+    <Description>NModbus4 is a C# (.NetStandard 2.0) implementation of the Modbus protocol. Provides connectivity to Modbus slave compatible devices and applications. Supports ASCII, RTU, TCP, and UDP protocols. NModbus4 it's a fork of NModbus(https://github.com/NModbus4/NModbus4)</Description>
+    <VersionPrefix>4.0.2</VersionPrefix>
+    <Authors>Muhammad Ummar Iqbal</Authors>
     <TargetFrameworks>net461;netstandard2.0</TargetFrameworks>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>NModbus4</AssemblyName>

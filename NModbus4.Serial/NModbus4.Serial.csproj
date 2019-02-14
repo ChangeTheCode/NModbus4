@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <Description>NModbus4.Serial Class Library</Description>
-    <VersionPrefix>4.0.1</VersionPrefix>
-    <Authors>Dmitry Turin</Authors>
+    <VersionPrefix>4.0.2</VersionPrefix>
+    <Authors>Muhammad Ummar Iqbal</Authors>
     <TargetFramework>net461</TargetFramework>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <AssemblyName>NModbus4.Serial</AssemblyName>
@@ -17,7 +17,7 @@
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-    <Version>4.0.1</Version>
+    <Version>4.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIconUrl>https://raw.githubusercontent.com/ummarbhutta/NModbus4/portable-ns20/modbus_connections.png</PackageIconUrl>
   </PropertyGroup>
