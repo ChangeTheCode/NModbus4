@@ -1,13 +1,13 @@
 ﻿namespace Modbus
 {
     using System;
-#if NET46
+#if NET461
     using System.Runtime.Serialization;
 #endif
     /// <summary>
     ///     An exception that provides the exception code that will be sent in response to an invalid Modbus request.
     /// </summary>
-#if NET46
+#if NET461
     [Serializable]
 #endif
     public class InvalidModbusRequestException : Exception
@@ -55,7 +55,7 @@
             _exceptionCode = exceptionCode;
         }
 
-#if NET46
+#if NET461
         /// <summary>
         ///     Initializes a new instance of the <see cref="InvalidModbusRequestException" /> class with serialized data.
         /// </summary>
@@ -76,7 +76,7 @@
             get { return _exceptionCode; }
         }
 
-#if NET46
+#if NET461
         /// <summary>Sets the <see cref="SerializationInfo" /> object with the Modbus exception code and additional exception information.</summary>
         /// <param name="info">The <see cref="SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
         /// <param name="context">The <see cref="StreamingContext" /> that contains contextual information about the source or destination.</param>

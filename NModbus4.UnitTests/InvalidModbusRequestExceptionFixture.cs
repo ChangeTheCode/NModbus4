@@ -1,5 +1,5 @@
 ﻿using System.IO;
-#if NET46
+#if NET461
 using System.Runtime.Serialization.Formatters.Binary;
 #endif
 using Xunit;
@@ -46,7 +46,7 @@ namespace Modbus.UnitTests
             Assert.Same(inner, e.InnerException);
         }
 
-#if NET46
+#if NET461
         [Fact]
         public void Serializable()
         {

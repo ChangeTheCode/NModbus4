@@ -2,7 +2,7 @@
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
-#if NET46
+#if NET461
     using System.Runtime.Serialization;
     using System.Security.Permissions;
 #endif
@@ -11,7 +11,7 @@
     /// <summary>
     ///     Represents slave errors that occur during communication.
     /// </summary>
-#if NET46
+#if NET461
     [Serializable]
 #endif
     public class SlaveException : Exception
@@ -60,7 +60,7 @@
             _slaveExceptionResponse = slaveExceptionResponse;
         }
 
-#if NET46
+#if NET461
         /// <summary>
         ///     Initializes a new instance of the <see cref="SlaveException" /> class.
         /// </summary>
@@ -133,7 +133,7 @@
             get { return _slaveExceptionResponse != null ? _slaveExceptionResponse.SlaveAddress : (byte)0; }
         }
 
-#if NET46
+#if NET461
         /// <summary>
         ///     When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo"></see>
         ///     with information about the exception.
