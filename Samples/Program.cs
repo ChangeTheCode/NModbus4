@@ -69,7 +69,7 @@ namespace MySample
                     request.PayloadLength = 0;
 
                     var response = master.ExecuteCustomMessage<CustomFunctionModbusMessage>(request);
-                    
+
                     Console.WriteLine($"Response function code received {response.FunctionCode}");
                 }
             }
@@ -77,7 +77,7 @@ namespace MySample
             {
                 Console.WriteLine($"Exception occured while executing custom function, {exp.Message}");
             }
-            
+
         }
 
         /// <summary>
@@ -86,21 +86,21 @@ namespace MySample
         /// </summary>
         private static void StartModbusTcpSlaveCustomFunctionHandler()
         {
-            byte slaveId = 1;
-            int port = 502;
-            IPAddress address = new IPAddress(new byte[] { 127, 0, 0, 1 });
+                byte slaveId = 1;
+                int port = 502;
+                IPAddress address = new IPAddress(new byte[] { 127, 0, 0, 1 });
 
-            // create and start the TCP slave
-            TcpListener slaveTcpListener = new TcpListener(address, port);
-            slaveTcpListener.Start();
+                // create and start the TCP slave
+                TcpListener slaveTcpListener = new TcpListener(address, port);
+                slaveTcpListener.Start();
 
-            ModbusSlave slave = ModbusTcpSlave.CreateTcp(slaveId, slaveTcpListener, onCreateCustomRequest, onCreateCustomResponse);
-            slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
+                ModbusSlave slave = ModbusTcpSlave.CreateTcp(slaveId, slaveTcpListener, onCreateCustomRequest, onCreateCustomResponse);
+                slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
 
-            slave.ListenAsync().GetAwaiter().GetResult();
+                slave.ListenAsync(CancellationToken.None).GetAwaiter().GetResult();
 
-            // prevent the main thread from exiting
-            Thread.Sleep(Timeout.Infinite);
+                // prevent the main thread from exiting
+                Thread.Sleep(Timeout.Infinite);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace MySample
         {
             //create custom response, It will not do any thing special, will only check function code, if it is 105
             //then send response just with function code 105
-            if(request.FunctionCode == 105)
+            if (request.FunctionCode == 105)
             {
                 //Custome function request received.
                 var response = new CustomFunctionModbusMessage();
@@ -273,7 +273,7 @@ namespace MySample
                 ModbusSlave slave = ModbusSerialSlave.CreateAscii(unitId, adapter);
                 slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
 
-                slave.ListenAsync().GetAwaiter().GetResult();
+                slave.ListenAsync(CancellationToken.None).GetAwaiter().GetResult();
             }
         }
 
@@ -298,7 +298,7 @@ namespace MySample
                 ModbusSlave slave = ModbusSerialSlave.CreateRtu(unitId, adapter);
                 slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
 
-                slave.ListenAsync().GetAwaiter().GetResult();
+                slave.ListenAsync(CancellationToken.None).GetAwaiter().GetResult();
             }
         }
 
@@ -334,7 +334,7 @@ namespace MySample
             ModbusSlave slave = ModbusTcpSlave.CreateTcp(slaveId, slaveTcpListener);
             slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
 
-            slave.ListenAsync().GetAwaiter().GetResult();
+            slave.ListenAsync(CancellationToken.None).GetAwaiter().GetResult();
 
             // prevent the main thread from exiting
             Thread.Sleep(Timeout.Infinite);
@@ -350,7 +350,7 @@ namespace MySample
                 ModbusUdpSlave slave = ModbusUdpSlave.CreateUdp(client);
                 slave.DataStore = DataStoreFactory.CreateDefaultDataStore();
 
-                slave.ListenAsync().GetAwaiter().GetResult();
+                slave.ListenAsync(CancellationToken.None).GetAwaiter().GetResult();
 
                 // prevent the main thread from exiting
                 Thread.Sleep(Timeout.Infinite);
@@ -370,7 +370,7 @@ namespace MySample
             TcpListener slaveTcpListener = new TcpListener(address, port);
             slaveTcpListener.Start();
             ModbusSlave slave = ModbusTcpSlave.CreateTcp(slaveId, slaveTcpListener);
-            var listenTask = slave.ListenAsync();
+            var listenTask = slave.ListenAsync(CancellationToken.None);
 
             // create the master
             TcpClient masterTcpClient = new TcpClient(address.ToString(), port);
@@ -419,7 +419,7 @@ namespace MySample
                 // create modbus slave on seperate thread
                 byte slaveId = 1;
                 ModbusSlave slave = ModbusSerialSlave.CreateAscii(slaveId, slaveAdapter);
-                var listenTask = slave.ListenAsync();
+                var listenTask = slave.ListenAsync(CancellationToken.None);
 
                 var masterAdapter = new SerialPortAdapter(masterPort);
                 // create modbus master

@@ -3,6 +3,7 @@
     using System;
     using System.Diagnostics;
     using System.IO;
+    using System.Threading;
     using System.Threading.Tasks;
 #if SERIAL
     using System.IO.Ports;
@@ -166,9 +167,9 @@
         /// <summary>
         ///     Start slave listening for requests.
         /// </summary>
-        public override async Task ListenAsync()
+        public override async Task ListenAsync(CancellationToken cancellationToken)
         {
-            while (true)
+            while (true && !cancellationToken.IsCancellationRequested)
             {
                 try
                 {
