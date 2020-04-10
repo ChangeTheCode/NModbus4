@@ -4,7 +4,6 @@
     using System.Diagnostics;
     using System.Diagnostics.CodeAnalysis;
     using System.Linq;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using Data;
@@ -58,7 +57,7 @@
         /// <summary>
         ///     Start slave listening for requests.
         /// </summary>
-        public abstract Task ListenAsync(CancellationToken cancellationToken);
+        public abstract Task ListenAsync();
 
         internal static ReadCoilsInputsResponse ReadDiscretes(
             ReadCoilsInputsRequest request,
