@@ -5,7 +5,6 @@
     using System.Linq;
     using System.Net;
     using System.Net.Sockets;
-    using System.Threading;
     using System.Threading.Tasks;
 
     using IO;
@@ -58,13 +57,13 @@
         /// <summary>
         ///     Start slave listening for requests.
         /// </summary>
-        public override async Task ListenAsync(CancellationToken cancellationToken)
+        public override async Task ListenAsync()
         {
             Debug.WriteLine("Start Modbus Udp Server.");
 
             try
             {
-                while (true && !cancellationToken.IsCancellationRequested)
+                while (true)
                 {
                     UdpReceiveResult receiveResult = await _udpClient.ReceiveAsync().ConfigureAwait(false);
                     IPEndPoint masterEndPoint = receiveResult.RemoteEndPoint;

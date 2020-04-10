@@ -12,7 +12,6 @@
 #endif
     using IO;
     using global::Modbus.Message;
-    using System.Threading;
 
     /// <summary>
     ///     Modbus TCP slave device.
@@ -126,13 +125,13 @@
         /// <summary>
         ///     Start slave listening for requests.
         /// </summary>
-        public override async Task ListenAsync(CancellationToken cancellationToken)
+        public override async Task ListenAsync()
         {
             Debug.WriteLine("Start Modbus Tcp Server.");
             // TODO: add state {stoped, listening} and check it before starting
             Server.Start();
 
-            while (true && !cancellationToken.IsCancellationRequested)
+            while (true)
             {
                 TcpClient client = await Server.AcceptTcpClientAsync().ConfigureAwait(false);
                 var masterConnection = new ModbusMasterTcpConnection(client, this);
